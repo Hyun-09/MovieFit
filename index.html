@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -7,15 +8,18 @@
   <title>MovieFit — 취향 기반 영화 추천</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main class="shell">
     <header class="hero">
       <div class="badge">MOVIEFIT</div>
-      <h1>취향을 읽고<br><span>영화를 골라주는</span> 추천기</h1>
-      <p>장르만 고르는 추천기가 아니라, 좋아하는 영화와 영화의 구성 요소까지 비교해서 점수를 계산합니다.</p>
+      <h1>취향에 맞춰<br><span>영화를 골라주는</span> 추천기</h1>
+      <p>사용자의 취향에 맞춰 최적의 영화를 추천합니다.</p>
     </header>
 
     <section class="card" id="setupCard">
@@ -31,7 +35,9 @@
     </section>
 
     <section class="card hidden" id="quizCard">
-      <div class="progress"><div id="progressBar"></div></div>
+      <div class="progress">
+        <div id="progressBar"></div>
+      </div>
       <div class="step" id="stepLabel"><span>02</span> 취향 조사</div>
 
       <div class="question active" data-step="1">
@@ -103,15 +109,16 @@
       </div>
       <div class="profile-tags" id="profileTags"></div>
       <div class="movie-grid" id="movieGrid"></div>
-      <p class="tmdb-credit">Movie data and images provided by TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+      <p class="tmdb-credit">Movie data and images provided by TMDB. This product uses the TMDB API but is not endorsed
+        or certified by TMDB.</p>
     </section>
 
     <footer>
       <span>MovieFit</span>
-      <span>TMDB API 기반 취향 분석 프로젝트</span>
     </footer>
   </main>
 
   <script src="app.js"></script>
 </body>
+
 </html>
