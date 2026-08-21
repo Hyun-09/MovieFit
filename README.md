@@ -13,16 +13,6 @@
 - 영화 상세정보의 배우/키워드/장르를 이용해 취향 점수 계산
 - 모바일 반응형 UI
 
-## 사용법
-
-1. https://hyun-09.github.io/MovieFit/ 웹 사이트에 접속한다.
-3. 첫 화면에 eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTM5OTg0ZmJlOWM0YWYyZGY5ZTI4ZmYyYjc4NGEzZSIsIm5iZiI6MTc4NzI5NzU3NS44NTIsInN1YiI6IjZhODdmZjI3YjI1MzZhMzYxNTQzMGFhNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pdYlA2STwAxSyDxL9Yot-h0Y0sRnaHghCUW0lgMP35g를 입력한다.
-4. 취향을 조사한다.
-5. 추천 결과를 확인한다.
-
-TMDB 공식 문서:
-https://developer.themoviedb.org/docs/getting-started
-
 ## 추천 알고리즘
 
 최종 점수는 대략 다음 구조로 계산한다.
