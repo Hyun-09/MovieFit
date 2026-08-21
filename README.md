@@ -15,7 +15,7 @@
 
 ## 사용법
 
-1. `index.html`을 실행한다.
+1. https://hyun-09.github.io/MovieFit/ 웹 사이트에 접속한다.
 2. TMDB 계정에서 API Read Access Token을 발급한다.
 3. 첫 화면에 토큰을 입력한다.
 4. 취향을 조사한다.
@@ -23,12 +23,6 @@
 
 TMDB 공식 문서:
 https://developer.themoviedb.org/docs/getting-started
-
-## 중요한 점
-
-이 버전은 **교육/동아리 프로젝트용 브라우저 버전**이다. API 토큰을 프론트엔드에 직접 넣는 구조이므로 실제 공개 서비스에서는 토큰을 서버/서버리스 함수에 두는 것을 권장한다.
-
-또한 TMDB 데이터와 이미지를 사용하므로 TMDB의 표시/이용 약관 및 attribution 요구사항을 확인해야 한다.
 
 ## 추천 알고리즘
 
