@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <title>MovieFit — 취향 기반 영화 추천</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="badge">MOVIEFIT</div>
+      <h1>취향을 읽고<br><span>영화를 골라주는</span> 추천기</h1>
+      <p>장르만 고르는 추천기가 아니라, 좋아하는 영화와 영화의 구성 요소까지 비교해서 점수를 계산합니다.</p>
+    </header>
+
+    <section class="card" id="setupCard">
+      <div class="step"><span>01</span> API 연결</div>
+      <h2>TMDB API Read Access Token</h2>
+      <p class="muted">브라우저에서 직접 호출하는 데모 버전입니다. 토큰은 이 기기의 세션에만 저장됩니다.</p>
+      <div class="input-row">
+        <input id="tokenInput" type="password" autocomplete="off" placeholder="eyJhbGciOiJIUzI1NiJ9..." />
+        <button class="secondary" id="saveTokenBtn">저장</button>
+      </div>
+      <p class="help">TMDB 계정 → Settings → API → API Read Access Token에서 발급할 수 있습니다.</p>
+      <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">TMDB API 설정 열기 ↗</a>
+    </section>
+
+    <section class="card hidden" id="quizCard">
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="step" id="stepLabel"><span>02</span> 취향 조사</div>
+
+      <div class="question active" data-step="1">
+        <h2>어떤 장르를 좋아해?</h2>
+        <p class="muted">최대 4개까지 선택</p>
+        <div class="chips" id="genreChips"></div>
+      </div>
+
+      <div class="question" data-step="2">
+        <h2>영화를 볼 때 뭐가 가장 중요해?</h2>
+        <div class="choice-grid">
+          <button class="choice" data-value="story"><b>스토리</b><small>반전, 세계관, 서사</small></button>
+          <button class="choice" data-value="character"><b>캐릭터</b><small>인물 관계와 성장</small></button>
+          <button class="choice" data-value="visual"><b>영상미</b><small>촬영, 미장센, 연출</small></button>
+          <button class="choice" data-value="emotion"><b>감정</b><small>여운과 공감</small></button>
+        </div>
+      </div>
+
+      <div class="question" data-step="3">
+        <h2>영화의 속도는?</h2>
+        <div class="choice-grid">
+          <button class="choice" data-value="slow"><b>천천히</b><small>분위기와 대화 중심</small></button>
+          <button class="choice" data-value="balanced"><b>적당히</b><small>전개와 분위기 균형</small></button>
+          <button class="choice" data-value="fast"><b>빠르게</b><small>사건이 계속 터지는 편</small></button>
+        </div>
+      </div>
+
+      <div class="question" data-step="4">
+        <h2>어떤 분위기를 선호해?</h2>
+        <div class="choice-grid">
+          <button class="choice" data-value="warm"><b>따뜻함</b><small>힐링, 우정, 가족</small></button>
+          <button class="choice" data-value="dark"><b>어두움</b><small>긴장, 심리, 범죄</small></button>
+          <button class="choice" data-value="epic"><b>웅장함</b><small>모험, 전쟁, 대서사</small></button>
+          <button class="choice" data-value="quirky"><b>독특함</b><small>기묘함, 블랙코미디</small></button>
+        </div>
+      </div>
+
+      <div class="question" data-step="5">
+        <h2>좋아하는 영화 1~3개</h2>
+        <p class="muted">제목을 검색해서 선택하면 추천 정확도가 크게 올라갑니다.</p>
+        <div class="search-row">
+          <input id="movieSearchInput" placeholder="예: Interstellar, 기생충, 라라랜드" />
+          <button class="secondary" id="movieSearchBtn">검색</button>
+        </div>
+        <div id="movieSearchResults" class="search-results"></div>
+        <div id="selectedMovies" class="selected-list"></div>
+      </div>
+
+      <div class="nav-row">
+        <button class="secondary hidden" id="prevBtn">이전</button>
+        <button class="primary" id="nextBtn">다음</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="loadingCard">
+      <div class="loader"></div>
+      <h2 id="loadingTitle">취향 분석 중...</h2>
+      <p class="muted" id="loadingText">영화 데이터를 모으고 있습니다.</p>
+    </section>
+
+    <section class="hidden" id="resultSection">
+      <div class="result-head">
+        <div>
+          <div class="step"><span>03</span> 추천 결과</div>
+          <h2>너에게 맞는 영화</h2>
+          <p class="muted" id="profileText"></p>
+        </div>
+        <button class="secondary" id="resetBtn">다시 조사</button>
+      </div>
+      <div class="profile-tags" id="profileTags"></div>
+      <div class="movie-grid" id="movieGrid"></div>
+      <p class="tmdb-credit">Movie data and images provided by TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+    </section>
+
+    <footer>
+      <span>MovieFit</span>
+      <span>TMDB API 기반 취향 분석 프로젝트</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
