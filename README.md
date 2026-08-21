@@ -16,8 +16,7 @@
 ## 사용법
 
 1. https://hyun-09.github.io/MovieFit/ 웹 사이트에 접속한다.
-2. TMDB 계정에서 API Read Access Token을 발급한다.
-3. 첫 화면에 토큰을 입력한다.
+3. 첫 화면에 eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTM5OTg0ZmJlOWM0YWYyZGY5ZTI4ZmYyYjc4NGEzZSIsIm5iZiI6MTc4NzI5NzU3NS44NTIsInN1YiI6IjZhODdmZjI3YjI1MzZhMzYxNTQzMGFhNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pdYlA2STwAxSyDxL9Yot-h0Y0sRnaHghCUW0lgMP35g를 입력한다.
 4. 취향을 조사한다.
 5. 추천 결과를 확인한다.
 
